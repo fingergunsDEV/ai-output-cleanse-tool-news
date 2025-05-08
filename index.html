@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en" x-data="{ darkMode: localStorage.getItem('darkMode') === 'true' }" :class="{ 'dark': darkMode }">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Hidden Threat of AI-Inserted Characters</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="/js/clean_html_before_render.js" defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .fade-in {
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(10px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        .progress-bar {
+            height: 4px;
+            background-color: #2563eb;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 50;
+            transition: width 0.2s;
+        }
+        .sticky-cta {
+            transition: all 0.3s ease;
+        }
+        .dark .bg-gray-100 { background-color: #0074d9; }
+        .dark .bg-white { background-color: #0074d922; }
+        .dark .text-gray-800 { color: #e5e7eb; }
+        .dark .text-gray-600 { color: #d1d5db; }
+        .dark .bg-gray-50 { background-color: #4b5563;align-items:center; }
+			.author-box {
+				margin:0 auto;
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background-color: #f9fafb;
+				max-width:600px;
+			
+            border: 1px solid #e5e7eb;
+            border-radius: 0.375rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .author-box img {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            object-fit: cover;
+			
+        }
+        .author-box .author-info h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 0.25rem;
+							gap:10px;
+        }
+        .author-box .author-info p {
+            color: #6b7280;
+            font-size: 0.875rem;
+            margin-bottom: 0.5rem;
+        }
+        .author-box .author-info a {
+            color: #2563eb;
+            font-size: 0.875rem;
+            text-decoration: underline;
+        }
+        .author-box .author-info a:hover {
+            color: #1e40af;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 dark:bg-gray-800">
+    <!-- Progress Bar -->
+    <div class="progress-bar" x-data="progressBar()" x-bind:style="{ width: progress + '%' }"></div>
+
+    <!-- Sticky CTA Header -->
+    <header class="sticky top-0 bg-white dark:bg-gray-700 shadow-sm z-40">
+        <div class="max-w-5xl mx-auto px-4 py-3 flex justify-between items-center">
+            <span class="text-gray-800 dark:text-gray-200 font-medium">Clean AI Tool</span>
+            <div class="flex items-center space-x-4">
+                <a href="#newsletter" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition">Subscribe Now</a>
+                <button @click="darkMode = !darkMode; localStorage.setItem('darkMode', darkMode)" class="text-gray-600 dark:text-gray-300">
+                    <svg x-show="!darkMode" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                    <svg x-show="darkMode" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="bg-white dark:bg-gray-700 py-16">
+        <div class="max-w-5xl mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-800 dark:text-gray-100 mb-4 fade-in">Unveiling the Hidden Threat of AI-Inserted Characters</h1>
+            <p class="text-lg text-gray-600 dark:text-gray-300 mb-6 fade-in">Discover how invisible characters in AI content are risking your site—and how my Clean AI Tool can fix it.</p>
+            <a href="#newsletter" class="bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700 transition fade-in">Get the Clean AI Tool</a>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="max-w-5xl mx-auto px-4 py-12">
+        <div class="grid gap-6">
+            <!-- Content Card -->
+            <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md fade-in">
+                <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-4">AI-generated content is everywhere—blogs, product descriptions, even legal documents. But there’s a hidden problem lurking: invisible Unicode characters, zero-width spaces, and control characters embedded in AI outputs. These subtle markers, often used for fingerprinting or tracking, have been infiltrating content for an unknown duration. Left unchecked, they could disrupt your website’s SEO, cause rendering issues, expose security vulnerabilities, or undermine trust in digital content. The consequences are imminent, and action is essential.</p>
+            </div>
+
+            <!-- Problem Card -->
+            <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md fade-in">
+                <h2 class="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-4">The Problem</h2>
+                <p class="text-gray-600 dark:text-gray-300 mb-2">AI systems quietly insert:</p>
+                <ul class="list-disc pl-6 text-gray-600 dark:text-gray-300 mb-4">
+                    <li><strong>Zero-width spaces</strong> (e.g., U+200B) that are invisible but disrupt systems.</li>
+                    <li><strong>Control characters</strong> that corrupt formatting or data.</li>
+                    <li><strong>Unicode markers</strong> for tracking or identifying AI-generated text.</li>
+                </ul>
+                <p class="text-gray-600 dark:text-gray-300 mb-2">These characters can:</p>
+                <ul class="list-disc pl-6 text-gray-600 dark:text-gray-300">
+                    <li>Harm SEO by signaling spam to search engines.</li>
+                    <li>Cause rendering errors in browsers or applications.</li>
+                    <li>Create vulnerabilities for XSS attacks or data leaks.</li>
+                    <li>Erode trust as users question the authenticity of content.</li>
+                </ul>
+            </div>
+
+            <!-- Stakes Card -->
+            <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md fade-in">
+                <h2 class="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-4">The Stakes Are High</h2>
+                <p class="text-gray-600 dark:text-gray-300 leading-relaxed">Consider a medical record altered by invisible characters, a website penalized for “spam,” or a client losing confidence upon discovering AI fingerprints in your content. Regulatory bodies may also scrutinize undisclosed AI tracking, posing compliance risks. This is more than a technical issue—it’s a pressing challenge.</p>
+            </div>
+
+            <!-- Solution Card -->
+            <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md fade-in">
+                <h2 class="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-4">My Solution: The Clean AI Tool</h2>
+                <p class="text-gray-600 dark:text-gray-300 mb-4">I’ve developed a robust, user-friendly tool to address this issue. With my <strong>Clean AI Tool</strong>, you can:</p>
+                <ul class="list-disc pl-6 text-gray-600 dark:text-gray-300">
+                    <li>Paste any text or HTML.</li>
+                    <li>Automatically remove hidden characters, Unicode markers, and control characters.</li>
+                    <li>Reformat text for clean, professional output.</li>
+                    <li>Copy purified content, ready for publishing.</li>
+                </ul>
+                <p class="text-gray-600 dark:text-gray-300 mt-4">This tool safeguards your content’s integrity, SEO, and user trust, making it indispensable for content creators, developers, and business owners.</p>
+            </div>
+
+            <!-- Access Card -->
+            <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md fade-in">
+                <h2 class="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-4">Get Access Now</h2>
+                <p class="text-gray-600 dark:text-gray-300 mb-4">Want to use the Clean AI Tool? Subscribe to my newsletter at <a href="https://yourwebsite.com" class="text-blue-600 hover:underline">YourWebsite.com</a> for exclusive access! After subscribing, comment <strong>“Clean AI”</strong> below, and I’ll provide details to start cleaning your content immediately.</p>
+                <a href="#newsletter" class="bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700 transition inline-block">Subscribe to Newsletter</a>
+            </div>
+
+            <!-- Why It Matters Card -->
+            <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md fade-in">
+                <h2 class="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-4">Why This Matters</h2>
+                <p class="text-gray-600 dark:text-gray-300 leading-relaxed">Hidden characters in AI outputs signal a lack of transparency, risking content reliability and digital trust. Addressing this issue ensures the integrity of our platforms and maintains confidence in published content. Let’s prioritize accountability in AI-driven content creation.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Form -->
+    <section id="newsletter" class="bg-gray-50 dark:bg-gray-600 py-12">
+        <div class="max-w-5xl mx-auto px-4 text-center">
+            <h2 class="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-4 fade-in">Join the Clean AI Revolution</h2>
+            <p class="text-gray-600 dark:text-gray-300 mb-6 fade-in">Subscribe to my newsletter for exclusive access to the Clean AI Tool and updates on AI content solutions.</p>
+            <form x-data="{ email: '' }" @submit.prevent="alert('Subscription submitted! Check your email for Clean AI Tool access.')" class="max-w-md mx-auto flex flex-col sm:flex-row gap-4 fade-in">
+                <input x-model="email" type="email" placeholder="Enter your email" required class="flex-1 px-4 py-3 rounded-md border border-gray-300 dark:border-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500" aria-label="Email address">
+                <button type="submit" class="bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700 transition">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Comment Section -->
+    <section class="max-w-5xl mx-auto px-4 py-12">
+        <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md fade-in">
+            <h2 class="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-4">Leave a Comment</h2>
+            <form x-data="{ comment: '' }" @submit.prevent="comment.toLowerCase() === 'clean ai' ? alert('Thank you! Check your inbox for Clean AI Tool access details.') : alert('Please comment \'Clean AI\' for tool access or share your thoughts.')" class="space-y-4">
+                <textarea x-model="comment" rows="4" placeholder="Comment 'Clean AI' for tool access or share your thoughts..." required class="w-full px-4 py-3 rounded-md border border-gray-300 dark:border-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500" aria-label="Comment"></textarea>
+                <button type="submit" class="bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700 transition">Submit Comment</button>
+            </form>
+        </div>
+    </section>
+ <div class="author-box" style="display:flex;">
+            <img src="https://cdn.prod.website-files.com/65db95957d65c02ae759f7fe/68085524197fced5bb3eb1de_Pro%20Headshot%20APR2025.jpg" alt="Author Photo">
+            <div class="author-info">
+                <h3>Jason Gibson</h3>
+                <p>Founder & CEO | Holistic Growth Marketing</p>
+                <p>I'm passionate about building custom business solutions. <br/>Connect with me on <a href="https://linkedin.com/in/staycoojustbreathe">LinkedIn</a>.</p>
+							<div class="social-bar" style="display:flex;margin-top:10px;">
+								<a href="https://www.linkedin.com/company/holistic-growth-marketing" aria-label="visit me on LinkedIn"><img src="https://static.vecteezy.com/system/resources/previews/018/930/480/non_2x/linkedin-logo-linkedin-icon-transparent-free-png.png" style="width:25px;height:25px;"></img></a>
+						<a href="https://www.facebook.com/holisticgrowthmarketing" aria-label="visit me on Facebook"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6c/Facebook_Logo_2023.png" style="width:25px;height:25px;"></img>
+			<a href="https://medium.com/@jgibsonwebdesign" aria-label="visit me on Medium"><img src="data:image/png;base64,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" style="width:25px;height:25px;"></img></a>
+	<a href="https://codepen.io/FingerGuns" aria-label="visit me on Codepen"><img src="data:image/png;base64,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" style="width:25px;height:25px;"></img></a></div>
+            </div>
+        </div>
+    <!-- Social Sharing -->
+    <section class="max-w-5xl mx-auto px-4 py-12 text-center">
+        <h2 class="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-4 fade-in">Share This Post</h2>
+        <div class="flex justify-center gap-4 fade-in">
+            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://yourwebsite.com/clean-ai-post" target="_blank" class="text-blue-600 hover:text-blue-800" aria-label="Share on LinkedIn">
+                <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-1.337-.028-3.06-1.867-3.06-1.867 0-2.153 1.459-2.153 2.966v5.698h-3v-11h2.879v1.513h.04c.401-.757 1.379-1.557 2.837-1.557 3.036 0 3.604 2.001 3.604 4.604v6.44z"/></svg>
+            </a>
+            <a href="https://twitter.com/intent/tweet?url=https://yourwebsite.com/clean-ai-post&text=Discover the hidden threat of AI-inserted characters and the Clean AI Tool solution!" target="_blank" class="text-blue-600 hover:text-blue-800" aria-label="Share on Twitter">
+                <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-2.717 0-4.92 2.203-4.92 4.917 0 .39.045.765.127 1.124-4.086-.205-7.713-2.165-10.141-5.144-.424.729-.666 1.574-.666 2.475 0 1.708.869 3.215 2.188 4.099-.807-.026-1.566-.247-2.228-.616v.062c0 2.385 1.698 4.374 3.946 4.827-.413.111-.849.171-1.296.171-.314 0-.615-.03-.916-.086.621 1.938 2.422 3.354 4.558 3.394-1.669 1.308-3.774 2.085-6.059 2.085-.394 0-.787-.022-1.173-.067 2.179 1.397 4.768 2.212 7.548 2.212 9.057 0 14.009-7.507 14.009-14.009 0-.213-.005-.426-.014-.637.961-.695 1.797-1.562 2.457-2.549z"/></svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- JavaScript for Progress Bar -->
+    <script>
+        function progressBar() {
+            return {
+                progress: 0,
+                init() {
+                    window.addEventListener('scroll', () => {
+                        const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+                        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                        this.progress = (winScroll / height) * 100;
+                    });
+                }
+            }
+        }
+    </script>
+</body>
+</html>
